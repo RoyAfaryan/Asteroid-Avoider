@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -7,6 +9,8 @@ public class Spawner : MonoBehaviour
     public float spawnBoundsWidth = 2.5f; // Width of the area where asteroids can spawn
     public float spawnHeight = 10f; // Height above the camera where asteroids can spawn
     private float nextSpawnTime = 0f; // Time when the next asteroid should spawn
+
+    public GameObject asteroidObject;
 
     private void Start()
     {
@@ -19,6 +23,8 @@ public class Spawner : MonoBehaviour
             asteroidPrefabs[2] = Resources.Load<GameObject>("Prefabs/Asteroid_Prefabs/asteroid_03");
             asteroidPrefabs[3] = Resources.Load<GameObject>("Prefabs/Asteroid_Prefabs/asteroid_04");
         }
+
+        StartCoroutine(IncreaseFallSpeed());
     }
 
     private void FixedUpdate()
@@ -54,5 +60,21 @@ public class Spawner : MonoBehaviour
 
         // Instantiate the selected asteroid prefab at the random spawn position
         return Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
+    }
+
+    private IEnumerator IncreaseFallSpeed()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(5f);
+
+            Asteroid asteroidObject = new Asteroid();
+            float currentFallSpeed = asteroidObject.getFallSpeed();
+            asteroidObject.setFallSpeed(currentFallSpeed + 1);
+
+            Debug.Log("Speed Increased");
+
+        }
+
     }
 }
