@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     public float spawnHeight = 10f; // Height above the camera where asteroids can spawn
     private float nextSpawnTime = 0f; // Time when the next asteroid should spawn
 
-    public GameObject asteroidObject;
+    private float asteroidSpeed = 5f;
 
     private void Start()
     {
@@ -58,19 +58,26 @@ public class Spawner : MonoBehaviour
         // Randomly select a spawn position within the specified bounds
         Vector3 spawnPosition = new Vector3(Random.Range(-spawnBoundsWidth, spawnBoundsWidth), spawnHeight, 0f);
 
-        // Instantiate the selected asteroid prefab at the random spawn position
-        return Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
+        GameObject asteroidObj = Instantiate(asteroidPrefab, spawnPosition, Quaternion.identity);
+        
+        asteroidObj.GetComponent<Asteroid>().setFallSpeed(asteroidSpeed);
+
+        return asteroidObj;
     }
 
     private IEnumerator IncreaseFallSpeed()
     {
         while(true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(1f);
 
-            Asteroid asteroidObject = new Asteroid();
-            float currentFallSpeed = asteroidObject.getFallSpeed();
-            asteroidObject.setFallSpeed(currentFallSpeed + 1);
+            if(asteroidSpeed < 10f){
+                asteroidSpeed += .1f;
+            }
+
+            if(spawnRate > .1f){
+                spawnRate -= .0015f;
+            }
 
             Debug.Log("Speed Increased");
 

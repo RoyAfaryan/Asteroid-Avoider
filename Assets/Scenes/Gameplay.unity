@@ -306,8 +306,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.005549569, y: 0.010915739}
-  m_Size: {x: 0.4194026, y: 0.8280087}
+  m_Offset: {x: -0.00024181975, y: 0.020568287}
+  m_Size: {x: 0.353767, y: 0.7778165}
   m_Direction: 0
 --- !u!1 &474769237
 GameObject:
@@ -764,7 +764,7 @@ MonoBehaviour:
   - {fileID: 7003741558992807323, guid: 845a5431bc5af6a45b3abb74d92e62c5, type: 3}
   - {fileID: 6280780841324790767, guid: ed92ea70f60384c4cadd49b310605445, type: 3}
   - {fileID: 9010880240442366466, guid: e9418800f6ba1de489f51fffae795bc1, type: 3}
-  spawnRate: 1.1
+  spawnRate: 0.3
   spawnBoundsWidth: 2.5
   spawnHeight: 10
 --- !u!4 &1110881483
