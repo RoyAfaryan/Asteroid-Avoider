@@ -70,4 +70,13 @@ public class ShipMovement : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the collided object has a "Destroyable" tag
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            Destroy(gameObject); // Destroy the GameObject
+        }
+    }
 }

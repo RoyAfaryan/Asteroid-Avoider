@@ -76,7 +76,7 @@ public class Spawner : MonoBehaviour
             }
 
             if(spawnRate > .1f){
-                spawnRate -= .0015f;
+                spawnRate -= .00185f;
             }
 
             Debug.Log("Speed Increased");
