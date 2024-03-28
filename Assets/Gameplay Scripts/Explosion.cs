@@ -31,9 +31,10 @@ public class Explosion : MonoBehaviour
     private void Explode()
     {
         // Instantiate explosion prefab at the stored position
-        Instantiate(explosionPrefab, position, Quaternion.identity);
+        var explosion = Instantiate(explosionPrefab, position, Quaternion.identity);
         
         // Destroy this game object
-        Destroy(gameObject);    
+        Destroy(gameObject);   
+        Destroy(explosion, .833f); 
     }
 }

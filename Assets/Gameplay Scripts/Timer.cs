@@ -44,6 +44,12 @@ public class Timer : MonoBehaviour
     public void PauseTimer()
     {
         isRunning = false;
+
+        var finalTime = timerText.text;
+        Debug.Log("final time: " + finalTime);
+
+        // DB
+        // INSERT finalTime INTO TABLE
     }
 
     public void ResumeTimer()
