@@ -29,7 +29,7 @@ public class ShipMovement : MonoBehaviour
 
     private void MoveShip()
     {
-        if (movementJoystick.Direction.y != 0)
+        if (movementJoystick.Direction.magnitude > 0.1f)
         {
             rb.velocity = new Vector2(movementJoystick.Direction.x * playerSpeed, movementJoystick.Direction.y * playerSpeed);
         }

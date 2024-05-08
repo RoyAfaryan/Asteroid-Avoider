@@ -9,6 +9,9 @@ public class GameplayManager : MonoBehaviour
     public GameObject EndGameScreen;
 
     public GameObject Spaceship;
+    public GameObject Joystick;
+    public GameObject ShieldButtton;
+    public GameObject ShieldCooldownButtton;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,9 @@ public class GameplayManager : MonoBehaviour
         if(Spaceship == null)
         {
             EndGameScreen.SetActive(true);
+            Joystick.SetActive(false);
+            ShieldButtton.SetActive(false);
+            ShieldCooldownButtton.SetActive(false);
         }
         
     }
@@ -32,5 +38,11 @@ public class GameplayManager : MonoBehaviour
     {
         // Reload the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void OnMainMenuButtonPressed()
+    {
+        // Load the Gameplay scene
+        SceneManager.LoadScene("Main Menu");
     }
 }
